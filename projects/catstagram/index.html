@@ -2,6 +2,7 @@
 <html lang="en">
 
 <!--NOT VISIBLE TO THE USER-->
+
 <head>
 
     <meta charset="UTF-8">
@@ -10,43 +11,71 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./javascript/brains.js"></script>
 
+    <style>
+        .brand-font {
+            font-style: italic;
+        }
+
+        img {
+            width: 300px;
+        }
+
+        .caption {
+            margin-bottom: 70px
+        }
+        .pic-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+     body {
+        background-color: rgba(103, 79, 40, 0.737)
+    }
+    </style>
+
 </head>
 
 <!--VISIBLE TO THE USER-->
+
 <body>
 
-    <h1>Catsagram</h1>
-    <h5>Sharing the World's Cats</h5>
-    <!-- Cat Photo 1 -->
-    <img src="https://static.invenglobal.com/upload/image/2022/02/08/i1644343907283446.jpeg">
-    <div id="likeCount1"></div>
-   
-    <button id="likeBtn">Like</button> 
-    <p>Masahiro Sakurai's Cat</p>
-    <!-- Cat Photo 2 -->
-    <img src="https://i.natgeofe.com/n/9135ca87-0115-4a22-8caf-d1bdef97a814/75552.jpg">
-    <div id="likeCount1"></div>
-   
-    <button id="likeBtn">Like</button> 
-    <p>This cat is quite grumpy today; maybe it just was woken early.</p>
-    <!-- Cat Photo 3 -->
-    <img src="https://media.npr.org/assets/img/2021/08/17/gettyimages-135773550-bb02ff79dd836d6e4170d4bc555423f24fa29d5e.jpg">
-    <div id="likeCount1"></div>
-   
-    <button id="likeBtn">Like</button> 
-    <p>This cat is quite close to the camera!</p>
-    <!-- Cat Photo 4 -->
-    <img src="https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-    <div id="likeCount1"></div>
-   
-    <button id="likeBtn">Like</button> 
-    <p>This cat was a part of a lot of internet culture in the early internet.</p>
-    <!-- Cat Photo 5 -->
-    <img src="https://www.cuded.com/wp-content/uploads/2013/11/29-Conductor.jpg">
-    <div id="likeCount1"></div>
-   
-    <button id="likeBtn">Like</button> 
-    <p>Cats stand a lot. Perhaps they're trying to be like humans?</p>
+    <h1 class="brand-font">Catsagram</h1>
+    <h5 class="brand-font">Sharing the World's Cats</h5>
+    <!-- PICTURE CONTAINER -->
+    <div class="pic-container">
+        <!-- Cat Photo 1 -->
+        <img src="img/cat1.jpeg">
+        <div id="likeCount1"></div>
+
+        <button id="likeBtn">Like</button>
+        <p class=caption>Masahiro Sakurai's Cat, Fukura</p>
+        <!-- Cat Photo 2 -->
+        <img src="https://i.natgeofe.com/n/9135ca87-0115-4a22-8caf-d1bdef97a814/75552.jpg">
+        <div id="likeCount1"></div>
+
+        <button id="likeBtn">Like</button>
+        <p class=caption>This cat is quite grumpy today; maybe it just was woken early.</p>
+        <!-- Cat Photo 3 -->
+        <img
+            src="https://media.npr.org/assets/img/2021/08/17/gettyimages-135773550-bb02ff79dd836d6e4170d4bc555423f24fa29d5e.jpg">
+        <div id="likeCount1"></div>
+
+        <button id="likeBtn">Like</button>
+        <p class=caption>This cat is quite close to the camera!</p>
+        <!-- Cat Photo 4 -->
+        <img
+            src="https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+        <div id="likeCount1"></div>
+
+        <button id="likeBtn">Like</button>
+        <p class=caption>This cat was a part of a lot of internet culture in the early internet.</p>
+        <!-- Cat Photo 5 -->
+        <img src="https://www.cuded.com/wp-content/uploads/2013/11/29-Conductor.jpg">
+        <div id="likeCount1"></div>
+
+        <button id="likeBtn">Like</button>
+        <p class=caption>Cats stand a lot. Perhaps they're trying to be like humans?</p>
+    </div>
 </body>
 
 </html>
