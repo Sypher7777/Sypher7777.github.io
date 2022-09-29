@@ -23,6 +23,8 @@
    */
   function init(game) {
     let createCannon = cannon.create;
+    createCannon("right",650, 4000);
+    createCannon("top",12, 120);
     ////////////////////////////////////////////////////////////////////////
     // ALL YOUR CODE GOES BELOW HERE ///////////////////////////////////////
 
