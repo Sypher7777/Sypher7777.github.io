@@ -38,6 +38,19 @@
     createCollectable(type.max,780,500,120,0.7 )
     createCollectable(type.steve,70,229,12,0.7 )
     createCollectable(type.grace,420,300,12,1.2)
+    createCollectable(type.kennedi,780,20,12,1 )
+    createCollectable(type.kennedi,780,20,12,1 )
+    createCollectable(type.kennedi,780,20,12,1 )
+    createCollectable(type.kennedi,780,20,12,1 )
+    createCollectable(type.kennedi,780,20,12,1 )
+    createCollectable(type.kennedi,780,20,12,1 )
+    createCollectable(type.kennedi,780,20,12,1 )
+    createCollectable(type.kennedi,780,20,12,1 )
+    createCollectable(type.kennedi,780,20,12,1 )
+    createCollectable(type.kennedi,780,20,12,1 )
+    createCollectable(type.kennedi,780,20,12,1 )
+    createCollectable(type.kennedi,780,20,12,1 )
+    createCollectable(type.kennedi,780,20,12,1 )
 
 
     ////////////////////////////////////////////////////////////////////////
