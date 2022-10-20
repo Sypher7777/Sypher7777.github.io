@@ -5,7 +5,7 @@ var counter4 = 0
 var counter5 = 0
 function likePhoto() {
     counter1 += 1
-}
+};
 const info = new info1();
 info.name = Masahiro;
 info.name_last = Sakurai;
