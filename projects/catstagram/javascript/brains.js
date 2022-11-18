@@ -7,11 +7,19 @@ function likePhoto() {
     counter1 = counter1 + 1
     console.log(counter1)
 };
-// const info = new info1();
-// info.name = Masahiro;
-// info.name_last = Sakurai;
-// info.followers = 705000;
-// info.profile_pic = placeholder;
+
+var user = {
+    "name" : "Dylan" ,
+    "name_last" : "Ambrose",
+    "followers" : [none, seriouly , none, whatyouthoughtthatihavepeopleto, follow, me],
+    "pfp" : "https://thumbs.dreamstime.com/b/catonblack-simple-cartoon-cat-icon-black-background-vector-illustration-137595320.jpg",
+}
+
+const info = new info1();
+info.name = Masahiro;
+info.name_last = Sakurai;
+info.followers = 705000;
+info.profile_pic = placeholder;
 function likePhoto2() {
     counter2 = counter2 +1
     console.log(counter2)
@@ -35,7 +43,7 @@ document.getElementById("likeCount1").innerHTML = counter2;
 document.getElementById("likeCount1").innerHTML = counter3;
 document.getElementById("likeCount1").innerHTML = counter4;
 document.getElementById("likeCount1").innerHTML = counter5;
-// setTimeout(function () { document.getElementById("name").innerHTML = user.name; }, 3000);
-// setTimeout(function () { document.getElementById("name_last").innerHTML = user.name_last; }, 3000);
-// setTimeout(function () { document.getElementById("followers").innerHTML = "Followers: " + user.followers.length; }, 3000);
-// setTimeout(function () { $("#profile_pic").attr("src", user.profile_pic); }, 3000);
+setTimeout(function () { document.getElementById("name").innerHTML = user.name; }, 3000);
+setTimeout(function () { document.getElementById("name_last").innerHTML = user.name_last; }, 3000);
+setTimeout(function () { document.getElementById("followers").innerHTML = "Followers: " + user.followers.length; }, 3000);
+setTimeout(function () { $("#profile_pic").attr("src", user.profile_pic); }, 3000);
