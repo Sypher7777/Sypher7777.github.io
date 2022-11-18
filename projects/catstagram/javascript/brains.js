@@ -11,7 +11,7 @@ function likePhoto() {
 var user = {
     "name" : "Dylan" ,
     "name_last" : "Ambrose",
-    "followers" : [none, seriouly , none, whatyouthoughtthatihavepeopleto, follow, me],
+    "followers" : [none, seriouly , none, what, youthoughtthatihavepeopleto, follow, me],
     "pfp" : "https://thumbs.dreamstime.com/b/catonblack-simple-cartoon-cat-icon-black-background-vector-illustration-137595320.jpg",
 }
 
