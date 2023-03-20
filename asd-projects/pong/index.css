@@ -1,0 +1,76 @@
+body {
+  background-color: darkgreen;
+}
+
+#board {
+  width: 1900px;
+  height: 680px;
+  border: 1px solid white;
+  background-color: black;
+  position: absolute;
+  margin-top: 200px;
+}
+
+#line {
+
+  /*   left: 100px; */
+  /* Uncomment if you want to set a "starting" position */
+  /*   top: 100px;  */
+  /* Uncomment if you want to set a "starting" position */
+}
+
+#paddle1 {
+  background-color: aliceblue;
+  width: 50px;
+  height: 500px;
+  border-radius: 100px;
+}
+
+#paddle2 {
+  background-color: aliceblue;
+  width: 50px;
+  height: 500px;
+  border-radius: 100px;
+
+  position: relative;
+  left: 1850px;
+  top: -500px;
+}
+
+#ball {
+  background-color: aliceblue;
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+
+  position: relative;
+  left: 950px;
+  top: -500px;
+
+}
+
+#score1 {
+  background-color: aliceblue;
+  padding: 50px;
+  border: 50px;
+  margin: 50px;
+  height: 50px;
+  width: 50px;
+
+  position: relative;
+  top: -10px;
+  left: 690px;
+}
+
+#score2 {
+  background-color: aliceblue;
+  padding: 50px;
+  border: 50px;
+  margin: 50px;
+  height: 50px;
+  width: 50px;
+
+  position: relative;
+  top: -210px;
+  left: 900px;
+}

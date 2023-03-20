@@ -1,0 +1,50 @@
+Describe the gameplay
+Two paddles are bouncing a ball between each other until it gets past one of them.
+What are the conditions when the game begins?
+It begins on paddle movement.
+Does the game have an end? If so, what are the conditions for when it ends?
+It ends when one player reaches a certain threshold of points.
+What ifs will there be?
+If the ball hits a paddle, it goes the other way. If it gets past a paddle, the other paddle earns a point. If the ball hits the bottom or top, it reverses it's vertical movement. If the player hits the up or down key, the paddle goes in that direction. If player hits score threshold, end the game. If the ball hits one of the paddles, it gets faster. If the paddle hits the top or bottom, the paddle stops. If the ball hits board edge, it returns to the center and resets ball speed. 
+
+What are the visual game components? For example, in Bouncing Box, the game components were the board and the box.
+The two paddles, the ball, the backgroud with a dotted center line.
+Which will be static? (the board)
+The board and the line are static.
+Which will be animated? (the box)
+The paddles and the ball are animated.
+What data will you need to manage each game component? For example, in Bouncing Box, the data values were positionX, speedX, and points.
+We'd use positionX, positionY, speedX, and speedY.
+
+What events will occur in this game? (timer events, keyboard events, clicking events?)
+"keydown" and "keyup" are some events. One player will use the up/down keys, while the other will use W and S. 
+How do those events affect the data of the program?
+It moves the paddle.
+For each "event", write out the high-level logic of what will happen. It is better (and tricky) to be as specific as you can while remaining high-level!
+
+ $(document).on("keydown", handleKeyDown)
+ function handleKeyDown(event){
+    if(event.which === KEY.up){
+        speedY = -5
+        move paddle up
+        increase position you
+        maybe decrease top css position
+    }
+
+    if else(event.which === key.down){
+        move paddle down
+        adjust position y
+    }
+
+    when ball hit paddle,
+    reverse horizontal, increase speed
+
+    if ball hits west or east border,
+    give opposite player point
+
+    if ball hits top or bottom border,
+    reverse vetical direction
+
+    if game start,
+    reset both players scores
+ }
