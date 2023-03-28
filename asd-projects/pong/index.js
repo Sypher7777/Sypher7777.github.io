@@ -20,19 +20,19 @@ function runProgram() {
   const board_height = $("#board").height();
   // Game Item Objects
   function wallCollision() {
-    if (ball.x >= board_width){
+    if (ball.x >= board_width) {
       ball.speedX = -ball.speedX
     }
-    if (ball.y >= board_height){
+    if (ball.y >= board_height) {
       ball.speedY = -ball.speedY
     }
-    if (ball.x >= board_width){
+    if (ball.x >= board_width) {
       ball.speedX = -ball.speedX
     }
-    if (ball.x >= board_width){
+    if (ball.x >= board_width) {
       ball.speedX = -ball.speedX
     }
-}
+  }
 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -42,15 +42,16 @@ function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
-  function getBox(box, x, y, width, height, speedX, speedY, id) {
-    var box = {};
-    box.x = x;
-    box.y = y;
-    box.width = width;
-    box.height = height;
-    box.speedX = speedX;
-    box.speedY = speedY;
-    box.id = id;
+  function getBall(ball, speedX, speedY, id) {
+    var ballObj = {};
+    ballObj.x = parseFloat($(ball).css("left"));
+    ballObj.y = parseFloat($(ball).css("top"));
+    ballObj.width = $(id).width();
+    ballObj.height = $(id).height();
+    ballObj.speedX = speedX;
+    ballObj.speedY = speedY;
+    ballObj.id = $("#ball").css(id);
+    return ballObj;
   }
 
   $(document).on('keydown', handleEvent);
@@ -97,27 +98,24 @@ function runProgram() {
 
   function startBall() {
     randomNum = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
-    ball = {
-      startingPosition: 100,
-      startingSpeed: 100,
-      speedX: randomNum,
-      speedY: randomNum,
-    }
+    ball.x = 100;
+    ball.y = 100;
+    ball.speedX = randomNum;
+    ball.speedY = randomNum;
   }
-  function moveObject(movement, id) {
-    movement.x = positionX + speedX;
-    movement.y = positionY + speedY;
-    movement.id = id
-    $("elementID").css("left", movement.x)
-    $("elementID").css("left", movement.y)
-  }
+}
+function moveObject(movement) {
+  movement.x += movement.speedX;
+  movement.y += movement.speedY;
+  movement.id = $(movement).css(id);
+  $("movement.id").css("left", movement.x);
+  $("movement.id").css("top", movement.y);
+}
 
-  function endGame() {
-    // stop the interval timer
-    clearInterval(interval);
+function endGame() {
+  // stop the interval timer
+  clearInterval(interval);
 
-    // turn off event handlers
-    $(document).off();
-  }
-
+  // turn off event handlers
+  $(document).off();
 }
