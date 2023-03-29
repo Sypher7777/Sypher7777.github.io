@@ -27,7 +27,7 @@ function runProgram(){
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
-
+  $(document).on('keyup', handleKeyUp);
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -45,21 +45,40 @@ function runProgram(){
   Called in response to events.
   */
   function handleKeyDown(event) {
-    if(event.which === KEYS.up){
+    if(event.which === KEYS.right){
       speedY = 5;
       console.log("Up pressed.")
     }
-    else if(event.which === KEYS.down){
+    else if(event.which === KEYS.left){
       speedY = -5;
       console.log("Down pressed.")
     }
-    else if(event.which === KEYS.right){
+    else if(event.which === KEYS.down){
       speedX = 5;
       console.log("Right pressed.")
     }
-    else if(event.which === KEYS.left) {
+    else if(event.which === KEYS.up) {
       speedX = -5;
       console.log("Left pressed.")
+    }
+  }
+
+  function handleKeyUp(event){
+    if(event.which === KEYS.right){
+      speedY = 0;
+      console.log("Up released.")
+    }
+    else if(event.which === KEYS.left){
+      speedY = 0;
+      console.log("Down released.")
+    }
+    else if(event.which === KEYS.down){
+      speedX = 0;
+      console.log("Right released.")
+    }
+    else if(event.which === KEYS.up) {
+      speedX = 0;
+      console.log("Left released.")
     }
   }
 
@@ -80,8 +99,8 @@ function runProgram(){
     positionY += speedY;
   }
   function redrawGameItem() {
-    $("#box").css("left", positionX);
-    $("#box").css("top", positionY);
+    $("#walker").css("top", positionX);
+    $("#walker").css("left", positionY);
   }
   
 }

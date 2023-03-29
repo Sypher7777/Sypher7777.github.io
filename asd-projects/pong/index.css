@@ -24,6 +24,10 @@ body {
   width: 50px;
   height: 500px;
   border-radius: 100px;
+
+  position: relative;
+  left: 3px;
+  top: 90px;
 }
 
 #paddle2 {
@@ -34,7 +38,7 @@ body {
 
   position: relative;
   left: 1850px;
-  top: -500px;
+  top: -497px;
 }
 
 #ball {
