@@ -24,7 +24,7 @@ function runProgram() {
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleEvent);
   $(document).on('keyup', handleUpEvent);                          // change 'eventType' to the type of event you want to handle
-  startBall();
+  startBall($ball);
 
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
@@ -44,6 +44,8 @@ function runProgram() {
   var $paddleOne = getObj("#paddle1");
   var $paddleTwo = getObj("#paddle2");
   var $ball = getObj("#ball");
+  console.log($ball.x);
+  
 
 
 
@@ -54,6 +56,7 @@ function runProgram() {
   function newFrame() {
     moveObj($paddleOne);
     moveObj($paddleTwo);
+    moveObj($ball);
   }
 
   /* 
@@ -123,20 +126,20 @@ function runProgram() {
     }
   }
 
-  function startBall() {
+  function startBall(blass) {
     // startingPos = $("#ball").css("left": , "top": );
     // startingSpeed = ;
     randomNum = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
-    $ball.x = 100;
-    $ball.y = 100;
-    $ball.speedX = randomNum;
-    $ball.speedY = randomNum;
+    blass.x = 100;
+    blass.y = 100;
+    blass.speedX += randomNum;
+    blass.speedY += randomNum;
   }
 }
 
 function moveObj(obj) {
   obj.x += obj.speedX;
-  console.log(obj.id);
+  // console.log(obj.x);
   obj.y += obj.speedY;
   $(obj.id).css("top", obj.x);
   $(obj.id).css("left", obj.y);

@@ -1,8 +1,8 @@
 /* global $, sessionStorage */
 
 $(document).ready(runProgram); // wait for the HTML / CSS elements of the page to fully load, then execute runProgram()
-  
-function runProgram(){
+
+function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
   //////////////////////////// SETUP /////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -11,16 +11,16 @@ function runProgram(){
   var FRAME_RATE = 60;
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
   const KEYS = {
-    left: 37 ,
-    down: 40 ,
-    up: 38 ,
-    right: 39 ,
+    left: 37,
+    down: 40,
+    up: 38,
+    right: 39,
   }
   var positionX = 0;
   var positionY = 0;
   var speedX = 0;
   var speedY = 0;
-  
+
   // Game Item Objects
 
 
@@ -40,43 +40,43 @@ function runProgram(){
     repositionGameItem();
     redrawGameItem();
   }
-  
+
   /* 
   Called in response to events.
   */
   function handleKeyDown(event) {
-    if(event.which === KEYS.right){
+    if (event.which === KEYS.right) {
       speedY = 5;
       console.log("Up pressed.")
     }
-    else if(event.which === KEYS.left){
+    else if (event.which === KEYS.left) {
       speedY = -5;
       console.log("Down pressed.")
     }
-    else if(event.which === KEYS.down){
+    else if (event.which === KEYS.down) {
       speedX = 5;
       console.log("Right pressed.")
     }
-    else if(event.which === KEYS.up) {
+    else if (event.which === KEYS.up) {
       speedX = -5;
       console.log("Left pressed.")
     }
   }
 
-  function handleKeyUp(event){
-    if(event.which === KEYS.right){
+  function handleKeyUp(event) {
+    if (event.which === KEYS.right) {
       speedY = 0;
       console.log("Up released.")
     }
-    else if(event.which === KEYS.left){
+    else if (event.which === KEYS.left) {
       speedY = 0;
       console.log("Down released.")
     }
-    else if(event.which === KEYS.down){
+    else if (event.which === KEYS.down) {
       speedX = 0;
       console.log("Right released.")
     }
-    else if(event.which === KEYS.up) {
+    else if (event.which === KEYS.up) {
       speedX = 0;
       console.log("Left released.")
     }
@@ -86,7 +86,7 @@ function runProgram(){
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
 
-  
+
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
@@ -102,5 +102,5 @@ function runProgram(){
     $("#walker").css("top", positionX);
     $("#walker").css("left", positionY);
   }
-  
+
 }
