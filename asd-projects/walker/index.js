@@ -46,19 +46,19 @@ function runProgram() {
   */
   function handleKeyDown(event) {
     if (event.which === KEYS.right) {
-      speedY = 5;
+      speedY = 8;
       console.log("Up pressed.")
     }
     else if (event.which === KEYS.left) {
-      speedY = -5;
+      speedY = -8;
       console.log("Down pressed.")
     }
     else if (event.which === KEYS.down) {
-      speedX = 5;
+      speedX = 8;
       console.log("Right pressed.")
     }
     else if (event.which === KEYS.up) {
-      speedX = -5;
+      speedX = -8;
       console.log("Left pressed.")
     }
   }

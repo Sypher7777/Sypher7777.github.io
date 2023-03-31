@@ -15,16 +15,17 @@ function runProgram() {
     up: 38,
     w: 87,
     s: 83,
+    d: 68,
   }
-  const board_width = $("#board").width();
-  const board_height = $("#board").height();
+  const boardWidth = $("#board").width();
+  const boardHeight = $("#board").height();
   // Game Item Objects
 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleEvent);
   $(document).on('keyup', handleUpEvent);                          // change 'eventType' to the type of event you want to handle
-  startBall($ball);
+
 
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
@@ -41,22 +42,26 @@ function runProgram() {
     return obj;
   }
 
+  //VARIABLE DECLARATIONS
   var $paddleOne = getObj("#paddle1");
   var $paddleTwo = getObj("#paddle2");
   var $ball = getObj("#ball");
-  console.log($ball.x);
-  
 
 
+
+  startBall($ball);
 
   /* 
-  On each "tick" of the timer, a new frame is dynamically drawn using JavaScript
+  On each "tick" of the timer, a  frame is dynamically drawn using JavaScript
   by calling this function and executing the code inside.
   */
   function newFrame() {
     moveObj($paddleOne);
     moveObj($paddleTwo);
     moveObj($ball);
+    wallCollision($paddleOne);
+    walleCollision($paddleTwo);
+    // walleCollision($ball);
   }
 
   /* 
@@ -65,7 +70,7 @@ function runProgram() {
 
 
   function handleEvent(event) {
-    if (event.which === KEYS.up) {
+    if (event.which === KEYS.d) {
       $paddleTwo.speedX += -5
       console.log("UP PRESSED.")
     }
@@ -87,7 +92,7 @@ function runProgram() {
   }
 
   function handleUpEvent(event) {
-    if (event.which === KEYS.up) {
+    if (event.which === KEYS.d) {
       $paddleTwo.speedX = 0
       console.log("UP RELEASED.")
     }
@@ -111,27 +116,31 @@ function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
-  function wallCollision() {
-    if ($ball.x >= board_width) {
-      $ball.speedX = -ball.speedX
+  function wallCollision(walle) {
+    if (walle.x <= 0) {
+      walle.x = 1
+      console.log("PADDLE 1 UPPER REVERSED.")
     }
-    else if ($ball.y >= board_height) {
-      $ball.speedY = -ball.speedY
-    }
-    else if ($ball.x >= board_width) {
-      $ball.speedX = -ball.speedX
-    }
-    else if ($ball.x >= board_width) {
-      $ball.speedX = -ball.speedX
+    else if (walle.x + walle.height >= boardHeight) {
+      walle.x = boardHeight - walle.height
+      console.log("PADDLE 1 BOTTOM REVERSED.")
     }
   }
 
+  function walleCollision(walle) {
+    if (walle.x < -500) {
+      walle.x = -500
+      console.log("PADDLE 2 UPPER REVERSED.")
+    }
+    else if (walle.x >= -330) {
+      walle.x = -331
+      console.log("PADDLE 2 BOTTOM REVERSED.")
+    }
+
+  }
+
   function startBall(blass) {
-    // startingPos = $("#ball").css("left": , "top": );
-    // startingSpeed = ;
     randomNum = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
-    blass.x = 100;
-    blass.y = 100;
     blass.speedX += randomNum;
     blass.speedY += randomNum;
   }
@@ -139,7 +148,6 @@ function runProgram() {
 
 function moveObj(obj) {
   obj.x += obj.speedX;
-  // console.log(obj.x);
   obj.y += obj.speedY;
   $(obj.id).css("top", obj.x);
   $(obj.id).css("left", obj.y);
