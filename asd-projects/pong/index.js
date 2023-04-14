@@ -19,6 +19,7 @@ function runProgram() {
   }
   const boardWidth = $("#board").width();
   const boardHeight = $("#board").height();
+
   // Game Item Objects
 
   // one-time setup
@@ -26,7 +27,8 @@ function runProgram() {
   $(document).on('keydown', handleEvent);
   $(document).on('keyup', handleUpEvent);                          // change 'eventType' to the type of event you want to handle
 
-
+  var score1 = 0;
+  var score2 = 0;
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -47,6 +49,9 @@ function runProgram() {
   var $paddleTwo = getObj("#paddle2");
   var $ball = getObj("#ball");
 
+  // console.log($ball.y)
+  // console.log($paddleTwo.y)
+  // console.log($paddleOne.y)
 
 
   startBall($ball);
@@ -61,7 +66,17 @@ function runProgram() {
     moveObj($ball);
     wallCollision($paddleOne);
     walleCollision($paddleTwo);
-    // walleCollision($ball);
+    whaleCollision($ball);
+    doCollide($ball, $paddleOne);
+    doCollide($ball, $paddleTwo);
+
+    // console.log($ball.y)
+    // console.log($paddleTwo.y)
+    // console.log($paddleOne.y)
+
+    // if (score1 || score2 === 4) {
+    //   endGame()
+    // }
   }
 
   /* 
@@ -70,7 +85,7 @@ function runProgram() {
 
 
   function handleEvent(event) {
-    if (event.which === KEYS.d) {
+    if (event.which === KEYS.up) {
       $paddleTwo.speedX += -5
       console.log("UP PRESSED.")
     }
@@ -116,6 +131,17 @@ function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
+  function doCollide(obj1, obj2) {
+    if (obj1.y === obj2.y) {
+      obj1.speedY = -obj1.speedY;
+      return true;
+    }
+    else {
+      return false
+    }
+  }
+
+
   function wallCollision(walle) {
     if (walle.x <= 0) {
       walle.x = 1
@@ -139,7 +165,39 @@ function runProgram() {
 
   }
 
+  function whaleCollision(whale) {
+    if (whale.y <= 3) {
+      whale.speedY = -whale.speedY
+      console.log("BALL LEFT REVERSED.")
+      score2 += 1
+      $("#score2").text(score2)
+      startBall($ball)
+    }
+
+    else if (whale.y >= 1850) {
+      whale.speedY = -whale.speedY
+      console.log("BALL RIGHT REVERSED.")
+      score1 += 1
+      $("#score1").text(score1)
+      startBall($ball)
+    }
+
+    if (whale.x <= -1000) {
+      whale.speedX = -whale.speedX
+      console.log("BALL UPPER REVERSED.")
+
+    }
+
+    else if (whale.x >= -380) {
+      whale.speedX = -whale.speedX
+      console.log("BALL BOTTOM REVERSED.")
+    }
+  }
+
+
   function startBall(blass) {
+    blass.x = -500;
+    blass.y = 950;
     randomNum = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
     blass.speedX += randomNum;
     blass.speedY += randomNum;
