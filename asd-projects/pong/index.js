@@ -147,6 +147,8 @@ function runProgram() {
     }
   }
 
+  
+
 
   function wallCollision(walle) {
     if (walle.x <= 0) {

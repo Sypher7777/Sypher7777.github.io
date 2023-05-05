@@ -15,11 +15,13 @@ The CSS ids you will work with are:
 
 // TODO 2: Implement bubbleSort
 
-async function bubbleSort(array){
-for(var i = 0; i < array.length; i++){
-    for(var j = i + 1; j < array.length; j++){
-        if(array[i].value > array[j].value){
-        
+async function bubbleSort(array) {
+    for (var i = 0; i < array.length; i++) {
+        for (var j = i + 1; j < array.length; j++) {
+            if (array[i].value > array[j].value) {
+                swap(i, j, array)
+                updateCounter(bubbleCounter);
+                await sleep();
             }
         }
     }
@@ -27,13 +29,30 @@ for(var i = 0; i < array.length; i++){
 
 // TODO 3: Implement quickSort
 
+async function quickSort(arr, left, right) {
+    if ((right - left) > 0) {
+        var index = await partition(arr, left, right)
+    }
+
+    else if (left < (index - 1)) {
+        await quicksort(arr, left, index - 1)
+    }
+
+    else if (right > index) {
+        await quicksort(arr, index, right)
+    }
+
+}
 
 // TODOs 4 & 5: Implement partition
 
+function partition(arr, left, right){
+    
+}
 
 // TODO 1: Implement swap
 
-function swap(i, j, array){
+function swap(i, j, array) {
     var temp = array[i]
     array[i] = array[j]
     array[j] = temp
@@ -47,12 +66,12 @@ function swap(i, j, array){
 //////////////////////////// HELPER FUNCTIONS /////////////////////////
 
 // this function makes the program pause by SLEEP_AMOUNT milliseconds whenever it is called
-function sleep(){
+function sleep() {
     return new Promise(resolve => setTimeout(resolve, SLEEP_AMOUNT));
 }
 
 // This function draws the swap on the screen
-function drawSwap(array, i, j){
+function drawSwap(array, i, j) {
     let element1 = array[i];
     let element2 = array[j];
 
@@ -63,6 +82,6 @@ function drawSwap(array, i, j){
 }
 
 // This function updates the specified counter
-function updateCounter(counter){
+function updateCounter(counter) {
     $(counter).text("Move Count: " + (parseFloat($(counter).text().replace(/^\D+/g, '')) + 1));
 }
