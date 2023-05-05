@@ -21,8 +21,9 @@ function resetAndRender() {
 function applyAndRender() {
   // Multiple TODOs: Call your apply function(s) here
 
-
-  applyFilter(reddify)
+  //applyFilter(decreaseBlue)
+  applyFilterNoBackground(reddify)
+  //applyFilter(increaseGreenByBlue)
 
 
 
@@ -40,12 +41,11 @@ function applyFilter(filterFunction) {
   for (var i = 0; i < image.length; i++) {
     var colors = image[i]
     for (var r = 0; r < colors.length; r++) {
-      var pixel = colors[r];
-      // rgbString is pixel
-      var rgbNumbers = rgbStringToArray(pixel);
+      var rgbString = colors[r];
+      var rgbNumbers = rgbStringToArray(rgbString);
       filterFunction(rgbNumbers)
-      pixel = rgbArrayToString(rgbNumbers);
-      colors[r] = pixel;
+      rgbString = rgbArrayToString(rgbNumbers);
+      colors[r] = rgbString;
     }
   }
 }
@@ -53,18 +53,56 @@ function applyFilter(filterFunction) {
 
 // TODO 7: Create the applyFilterNoBackground function
 
+function applyFilterNoBackground(filterFunction) {
+  var bgcolor = image[0][0]
+
+  for (var i = 0; i < image.length; i++) {
+    var colors = image[i]
+    for (var r = 0; r < colors.length; r++) {
+      if (rgbString !== bgcolor) {
+        var rgbString = colors[r];
+      }
+      var rgbNumbers = rgbStringToArray(rgbString);
+      filterFunction(rgbNumbers)
+      rgbString = rgbArrayToString(rgbNumbers);
+      colors[r] = rgbString;
+    }
+  }
+}
 
 // TODO 5: Create the keepInBounds function
 
+function keepInBounds(num) {
+  var max = Math.max(0, num)
+  var min = Math.min(num, 225)
+  return min;
+}
 
 // TODO 3: Create reddify function
 
 function reddify(arr) {
   arr[RED] = 200;
+  arr[0] = 200;
 }
 
 
 // TODO 6: Create more filter functions
+function increaseGreenByBlue(arr) {
+  var gb = arr[GREEN] + arr[BLUE]
+  // gb is green + blue
+  var kibgb = keepInBounds(gb)
+  // K.I.B. is keep in bounds function
+  console.log(kibgb);
+  arr[GREEN] = kibgb;
+}
 
+function decreaseBlue(arr) {
+  var deBlue = arr[BLUE] - 50
+  // deBlue is decrease in blue
+  var kibdeBlue = keepInBounds(deBlue)
+  //kibdeBlue is the keep in bounds function with the decrease blue variable
+  console.log(kibdeBlue);
+  arr[BLUE] = kibdeBlue;
+}
 
 // CHALLENGE code goes below here
