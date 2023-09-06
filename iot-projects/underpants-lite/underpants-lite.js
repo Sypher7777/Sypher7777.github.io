@@ -31,6 +31,9 @@ var _ = {};
 * _.typeOf([1,2,3]) -> "array"
 */
 
+_.typeOf = function(e){
+    return typeof e
+}
 
 /** _.first
 * Arguments:
@@ -50,6 +53,19 @@ var _ = {};
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
 
+_.first = function(arr, num){
+    if(typeof arr === "array"){
+        arr[num]
+    }
+
+else if(typeof num != "number"){
+    return arr[0]
+}
+
+    else{
+        return "[]"
+    }
+}
 
 /** _.last
 * Arguments:
@@ -69,6 +85,19 @@ var _ = {};
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+_.last = function(arr, num){
+    if(typeof arr === "array"){
+        arr[arr.length - 1]
+    }
+
+    else if(typeof num != "number"){
+        return arr[0]
+    }
+
+    else{
+        return "[]"
+    }
+}
 
 /** _.indexOf
 * Arguments:
@@ -86,6 +115,9 @@ var _ = {};
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
+function indexOf(arr, e){
+
+}
 
 /** _.contains
 * Arguments:
@@ -102,6 +134,16 @@ var _ = {};
 *   _.contains([1,"two", 3.14], "three") -> false
 */
 
+_.contains = function(arr, e){
+  for(var i; i > arr.length - 1;i++){
+    if(arr[i] === e){
+        return true
+    }
+    else{
+        return false
+    }
+}
+}
 
 /** _.each
 * Arguments:
@@ -119,6 +161,9 @@ var _ = {};
 *      -> should log "a" "b" "c" to the console
 */
 
+function each(){
+
+}
 
 /** _.filter
 * Arguments:
