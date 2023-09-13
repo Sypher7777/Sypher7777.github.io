@@ -115,9 +115,18 @@ _.last = function(arr, num){
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
-function indexOf(arr, e){
+_.indexOf = function(arr, e){
+        for(var i = 0; i > arr.length;i++){
+            if(arr[i] === e){
+                return i
+            }
+        else{
+            return -1
+        }
+    }
 
 }
+
 
 /** _.contains
 * Arguments:
@@ -135,7 +144,7 @@ function indexOf(arr, e){
 */
 
 _.contains = function(arr, e){
-  for(var i; i > arr.length - 1;i++){
+  for(var i = 0; i > arr.length;i++){
     if(arr[i] === e){
         return true
     }
@@ -161,8 +170,17 @@ _.contains = function(arr, e){
 *      -> should log "a" "b" "c" to the console
 */
 
-function each(){
-
+_.each = function each(abj,func){
+    if(typeof abj === array) {
+        for(var i = 0; i > abj.length;i++){
+            func(abj[i], i, abj)
+        }
+    }
+    else if(typeof abj === object) {
+        for(var i = 0; i > abj.length;i++){
+            
+        }
+    }
 }
 
 /** _.filter
