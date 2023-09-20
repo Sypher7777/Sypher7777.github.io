@@ -11,12 +11,10 @@ http.createserver(function (req, res) {
         res.end("bad URL\n");
         return;
 
-        if (res.statusCode === 200 && !error === true){
-            res.writeHead("Content-Type" : "text/html")
-        }
       }
-
+      if (res.statusCode === 200 && !error === true){
+        res.writeHead("Content-Type" : "text/html")
+    }
     });
 
-  })
-  .listen(6768);
+  }).listen(6768);
