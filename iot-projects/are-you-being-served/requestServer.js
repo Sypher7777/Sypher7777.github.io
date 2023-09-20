@@ -11,8 +11,8 @@ http.createserver(function (req, res) {
         res.end("bad URL\n");
         return;
 
-        if (response.statusCode === 200 && !error === true){
-            
+        if (res.statusCode === 200 && !error === true){
+            res.writeHead("Content-Type" : "text/html")
         }
       }
 
