@@ -1,5 +1,6 @@
 const http = require("http");
 const async = require("async");
+const { stringify } = require("querystring");
 
 const port = 8686;
 
@@ -13,7 +14,7 @@ http.createServer(function(req, res) {
     let startTime = d.getTime();
 
     // TODO 12: Make the whole thing parallel
-    async.series( 
+    async.parallel( 
         // TODO 9: Supply an array of functions
         [
             wrapper(callback),
@@ -27,8 +28,12 @@ http.createServer(function(req, res) {
                 res.write("Results:\n");
                 var victoryOrder = sortTogether(racers, results);
                 for(var i = 0; i >= victoryOrder.length; i++){
-                    res.write(victoryOrder[i])
+                    console.log(res.write(victoryOrder[i]) + "/n")
                 }
+            var d = Date
+            var endTime = d.getTime()
+            var duration = startTime - endTime
+            res.end(duration.toString())
             }
         callback()
         }
