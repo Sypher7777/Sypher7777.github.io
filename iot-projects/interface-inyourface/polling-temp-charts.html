@@ -130,11 +130,14 @@
         // Create a new WebSocket connection here
         var socket = new WebSocket("ws://f3dc5044859d.ngrok.io/pi/sensors/dht/temperature");
         socket.onmessage = function (event) {
-  // Fill in the body of the onmessage function
+            console.log("worked")
+            var result = JSON.parse(event.data);
+            addDataPoint(result, wsData, wsChart);
+            updateWsRecords(result.value)
 };
 
-socket.onerror = function (error) {
-  // Fill in the body of the onerror function
+        socket.onerror = function (error) {
+            console.log("didn't work")
 };
 
 
