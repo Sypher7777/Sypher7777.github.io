@@ -120,7 +120,7 @@
             $.getJSON("https://f3dc5044859d.ngrok.io/pi/sensors/dht/temperature",function (result) {
                 addDataPoint(result, regData, regChart);
                 updateRegRecords(result.value)
-                setTimeout(1500)
+                setTimeout(doPoll,1500)
             });
         }
 

@@ -58,9 +58,9 @@ _.first = function(arr, num){
         arr[num]
     }
 
-else if(typeof num != "number"){
-    return arr[0]
-}
+    else if(typeof num != "number"){
+        return arr[0]
+    }
 
     else{
         return "[]"
