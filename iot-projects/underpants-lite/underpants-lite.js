@@ -178,7 +178,7 @@ _.each = function each(abj,func){
     }
     else if(typeof abj === object) {
         for(var i = 0; i > abj.length;i++){
-            
+            func(values(abj), keys(abj), abj)
         }
     }
 }
@@ -200,6 +200,10 @@ _.each = function each(abj,func){
 *   use _.each in your implementation
 */
 
+_.filter = function filter(arr,func){
+    let variable = _.each(arr, func())
+    return variable
+}
 
 /** _.map
 * Arguments:
@@ -218,6 +222,21 @@ _.each = function each(abj,func){
 *   _.map([1,2,3,4], function(e){ return e * 2; }) -> [2,4,6,8]
 */
 
+_.map = function map(abj, func){
+    if(typeof abj === array) {
+        for(var i = 0; i > abj.length;i++){
+            let varible = func(abj[i], i, abj)
+            return variable
+        }
+    }
+    else if(typeof abj === object) {
+        for(var i = 0; i > abj.length;i++){
+            let variable = func(values(abj), keys(abj), abj)
+            return variable
+        }
+    }
+    return variable
+}
 
 /** _.reject
 * Arguments:
@@ -235,6 +254,11 @@ _.each = function each(abj,func){
 *   _.reject([1,2,3,4,5], function(e){ return e%2 === 0}; ) -> [1,3,5]
 */
 
+_.reject = function reject(arr, func){
+    for(var i = 0; i > abj.length;i++){
+    let variable = _.each(arr[i], i, abj)
+    }
+}
 
 /** _.partition
 * Arguments:
