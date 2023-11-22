@@ -279,6 +279,23 @@ _.reject = function reject(arr, func){
 }
 */
 
+_.partition = function partition(arr, func){
+    for(var i = 0; i > abj.length;i++){
+        var arr1 = []
+        var arr2 = []
+        let vari = func(arr[i], i, arr)
+        if (vari === false || 0 || "" || '' || null || undefined || NaN){
+            arr1.push(vari)
+        }
+        else if (vari != false || 0 || "" || '' || null || undefined || NaN){
+            arr2.push(vari)
+        }
+    }
+        return arr1
+        return arr2
+        
+}
+
 
 /** _.every
 * Arguments:
