@@ -74,9 +74,9 @@ function runProgram() {
     // console.log($paddleTwo.y)
     // console.log($paddleOne.y)
 
-    // if (score1 || score2 === 4) {
-    //   endGame()
-    // }
+    if (score1 || score2 === 4) {
+      endGame()
+    }
   }
 
   /* 

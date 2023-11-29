@@ -23,6 +23,16 @@ function runProgram() {
 
   // Game Item Objects
 
+  /*
+  function GameObject(){
+    var obj = {id};
+    obj.id = id
+    obj.width = $("#id").width()
+    obj.height = $("#id").height()
+    obj.color = $(id).css("color     b b   ")
+    return obj
+  }
+  */
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)

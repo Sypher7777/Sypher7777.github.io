@@ -178,7 +178,7 @@ _.each = function each(abj,func){
     }
     else if(typeof abj === object) {
         for(var i = 0; i > abj.length;i++){
-            
+            func(values(abj), keys(abj), abj)
         }
     }
 }
@@ -200,6 +200,10 @@ _.each = function each(abj,func){
 *   use _.each in your implementation
 */
 
+_.filter = function filter(arr,func){
+    let variable = _.each(arr, func())
+    return variable
+}
 
 /** _.map
 * Arguments:
@@ -218,6 +222,21 @@ _.each = function each(abj,func){
 *   _.map([1,2,3,4], function(e){ return e * 2; }) -> [2,4,6,8]
 */
 
+_.map = function map(abj, func){
+    if(typeof abj === array) {
+        for(var i = 0; i > abj.length;i++){
+            let varible = func(abj[i], i, abj)
+            return variable
+        }
+    }
+    else if(typeof abj === object) {
+        for(var i = 0; i > abj.length;i++){
+            let variable = func(values(abj), keys(abj), abj)
+            return variable
+        }
+    }
+    return variable
+}
 
 /** _.reject
 * Arguments:
@@ -235,6 +254,11 @@ _.each = function each(abj,func){
 *   _.reject([1,2,3,4,5], function(e){ return e%2 === 0}; ) -> [1,3,5]
 */
 
+_.reject = function reject(arr, func){
+    for(var i = 0; i > abj.length;i++){
+    let variable = _.each(arr[i], i, abj)
+    }
+}
 
 /** _.partition
 * Arguments:
@@ -254,6 +278,23 @@ _.each = function each(abj,func){
 *   }); -> [[2,4],[1,3,5]]
 }
 */
+
+_.partition = function partition(arr, func){
+    for(var i = 0; i > abj.length;i++){
+        var arr1 = []
+        var arr2 = []
+        let vari = func(arr[i], i, arr)
+        if (vari === false || 0 || "" || '' || null || undefined || NaN){
+            arr1.push(vari)
+        }
+        else if (vari != false || 0 || "" || '' || null || undefined || NaN){
+            arr2.push(vari)
+        }
+    }
+        return arr1
+        return arr2
+        
+}
 
 
 /** _.every
