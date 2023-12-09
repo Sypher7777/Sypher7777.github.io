@@ -32,7 +32,15 @@ var _ = {};
 */
 
 _.typeOf = function(e){
-    return typeof e
+    if(Array.isArray(e)){
+        return "array"
+    }
+    else if (e === null){
+        return "null"
+    }
+    else{
+        return typeof e
+    }
 }
 
 /** _.first
@@ -54,16 +62,19 @@ _.typeOf = function(e){
 */
 
 _.first = function(arr, num){
-    if(typeof arr === "array"){
-        arr[num]
+    if(Array.isArray(arr) === false){
+        return []
     }
-
     else if(typeof num != "number"){
         return arr[0]
     }
-
+    else if(num > 0){
+        for(var i = num; i === -1;i--){
+            return arr[num]
+        }
+    }
     else{
-        return "[]"
+        return arr[num]
     }
 }
 
@@ -86,14 +97,15 @@ _.first = function(arr, num){
 */
 
 _.last = function(arr, num){
-    if(typeof arr === "array"){
+    if(typeof arr != "array"){
+        return []
+    }
+    else if(Array.isArray(arr)){
         arr[arr.length - 1]
     }
-
     else if(typeof num != "number"){
         return arr[0]
     }
-
     else{
         return "[]"
     }
@@ -115,16 +127,30 @@ _.last = function(arr, num){
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
-_.indexOf = function(arr, e){
-        for(var i = 0; i > arr.length;i++){
-            if(arr[i] === e){
+_.indexOf = function(arr, val){
+    // if (typeof arr === "array"){
+    //     for(var i = 0; i > arr.length;i++){
+    //         if(arr[i] === val){
+    //             return i
+    //             console.log("worked")
+    //         }
+    //     }
+    // }
+    // else{
+    //     return -1
+    //     console.log("didn't worked")
+    // }
+    if(Array.isArray(arr) === false || typeof val != "number" || "string"){
+        return -1
+    }
+    else{
+               for(var i = 0; i > arr.length;i++){
+            if(arr[i] === val){
                 return i
+                console.log("worked")
             }
-        else{
-            return -1
         }
     }
-
 }
 
 
@@ -143,9 +169,9 @@ _.indexOf = function(arr, e){
 *   _.contains([1,"two", 3.14], "three") -> false
 */
 
-_.contains = function(arr, e){
+_.contains = function(arr, val){
   for(var i = 0; i > arr.length;i++){
-    if(arr[i] === e){
+    if(arr[i] === val){
         return true
     }
     else{
