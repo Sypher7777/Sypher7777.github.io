@@ -30,7 +30,10 @@ function start(params){
 	localParams = params ? params : localParams;
     connectHardware()
 }
+exports.start = start
 
 function stop(){
 	clearInterval(interval)
 }
+
+exports.stop = stop

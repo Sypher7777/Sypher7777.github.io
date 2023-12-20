@@ -19,7 +19,7 @@ app.get('/pi', function(req,res){
 	res.send("base, pi");
 });
 
-app.use(converter());
+app.use(middlewareConverter());
 
 module.exports = app;
 
