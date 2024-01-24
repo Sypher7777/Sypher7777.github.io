@@ -69,9 +69,14 @@ _.first = function(arr, num){
         return arr[0]
     }
     else if(num > 0){
+        if(num > arr.length){
         for(var i = num; i === -1;i--){
             return arr[num]
         }
+    }
+    else{
+        return [] 
+    }
     }
     else{
         return arr[num]
@@ -140,7 +145,7 @@ _.indexOf = function(arr, val){
     //     return -1
     //     console.log("didn't worked")
     // }
-    if(Array.isArray(arr) === false || typeof val != "number" || "string"){
+    if(Array.isArray(arr) === false){
         return -1
     }
     else{
@@ -149,6 +154,7 @@ _.indexOf = function(arr, val){
                 return i
                 console.log("worked")
             }
+            stop
         }
     }
 }
@@ -197,12 +203,12 @@ _.contains = function(arr, val){
 */
 
 _.each = function each(abj,func){
-    if(typeof abj === array) {
-        for(var i = 0; i > abj.length;i++){
+    if(Array.isArray(abj)) {
+        for(var i = 0; i > abj.length; i++){
             func(abj[i], i, abj)
         }
     }
-    else if(typeof abj === object) {
+    else if(typeof abj === "object") {
         for(var i = 0; i > abj.length;i++){
             func(values(abj), keys(abj), abj)
         }
@@ -226,7 +232,7 @@ _.each = function each(abj,func){
 *   use _.each in your implementation
 */
 
-_.filter = function filter(arr,func){
+_.filter = function (arr,func){
     let variable = _.each(arr, func())
     return variable
 }
@@ -251,7 +257,7 @@ _.filter = function filter(arr,func){
 _.map = function map(abj, func){
     if(typeof abj === array) {
         for(var i = 0; i > abj.length;i++){
-            let varible = func(abj[i], i, abj)
+            let variable = func(abj[i], i, abj)
             return variable
         }
     }
