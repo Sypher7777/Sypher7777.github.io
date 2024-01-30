@@ -89,6 +89,7 @@
     } else if ((paddleCPU.y + midCPU) > (ball.y + 14)) {
       paddleCPU.y -= paddleCPU.yVelocity;
     }
+    // DO NOT CHANGE OR ELSE CPU PADDLE WIL BREAK
 
     // TODO 1: bounce the ball off the top
 
