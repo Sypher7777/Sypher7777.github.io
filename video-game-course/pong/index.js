@@ -34,8 +34,8 @@
   // set initial properties for the ball
   ball.x = canvas.width / 2;
   ball.y = canvas.height / 2;
-  ball.xVelocity = 5;
-  ball.yVelocity = 5;
+  ball.xVelocity = -5;
+  ball.yVelocity = 0;
 
   // add the paddles and the ball to the view
   stage.addChild(paddlePlayer, paddleCPU, ball);
@@ -90,15 +90,31 @@
       paddleCPU.y -= paddleCPU.yVelocity;
     }
     // DO NOT CHANGE OR ELSE CPU PADDLE WIL BREAK
-
+    console.log(ball.x)
     // TODO 1: bounce the ball off the top
-
+    if(ball.y < 0){
+      ball.yVelocity = -ball.yVelocity
+    }
 
     // TODO 2: bounce the ball off the bottom
-
+    if(ball.y > canvas.height){
+      ball.yVelocity = -ball.yVelocity
+    }
 
     // TODO 3: bounce the ball off each of the paddles
-
+    if(
+       ((ball.x < paddlePlayer.x) && ((paddlePlayer.y < ball.y) && ((ball.y < paddlePlayer.y + heightPlayer)))) ||
+      (((ball.x - ball.radius) < (paddlePlayer.x + widthPlayer)) && ((paddlePlayer.y < ball.y) && ((ball.y < paddlePlayer.y + heightPlayer)))) ||
+      ((ball.y < paddlePlayer.y) && ((paddlePlayer.x < ball.x) && ((ball.x < paddlePlayer.x + widthPlayer)))) //||
+      //(ball.y + ball.radius > (paddlePlayer.y + heightPlayer) && ((paddlePlayer.x < ball.x) && ((ball.x < paddlePlayer.x + widthPlayer)))) //||
+      // (ball.x < paddleCPU.x) ||
+      // (ball.x > (paddleCPU.x + widthCPU)) ||
+      // (ball.y < paddleCPU.y) ||
+      // (ball.y > (paddleCPU.y + heightCPU))
+    )
+    {
+    ball.xVelocity = -ball.xVelocity
+    }
 
   }
 
