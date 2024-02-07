@@ -34,15 +34,20 @@
   // set initial properties for the ball
   ball.x = canvas.width / 2;
   ball.y = canvas.height / 2;
-  ball.xVelocity = -5;
-  ball.yVelocity = 0;
+  ball.xVelocity = 7;
+  ball.yVelocity = -5;
 
+  var playerText = draw.textfield("Score: 0", "bold 36px Arial", "purple","center", "middle", canvas.width / 2, canvas.height / 4)
+  console.log(playerText)
   // add the paddles and the ball to the view
-  stage.addChild(paddlePlayer, paddleCPU, ball);
+  stage.addChild(paddlePlayer, paddleCPU, ball, playerText);
 
 
   document.addEventListener('keyup', onKeyUp);
   document.addEventListener('keydown', onKeyDown);
+
+
+
 
   // when an Arrow key is pressed down, set the paddle in motion
   function onKeyDown(event) {
@@ -59,6 +64,8 @@
       paddlePlayer.yVelocity = 0;
     }
   }
+
+  var sc = 0
 
   function update(event) {
     const
@@ -90,31 +97,55 @@
       paddleCPU.y -= paddleCPU.yVelocity;
     }
     // DO NOT CHANGE OR ELSE CPU PADDLE WIL BREAK
-    console.log(ball.x)
+    
+  //vars
+  ball.left = ball.x - ball.radius
+  ball.right = ball.x + ball.radius
+  ball.up = ball.y - ball.radius
+  ball.down = ball.y + ball.radius
+
+  paddlePlayer.left = paddlePlayer.x
+  paddlePlayer.right = paddlePlayer.x + paddlePlayer.widthPlayer
+  paddlePlayer.up = paddlePlayer.y
+  paddlePlayer.down = paddlePlayer.y + paddlePlayer.heightPlayer
+
+  paddleCPU.left = paddleCPU.x
+  paddleCPU.right = paddleCPU.x + paddleCPU.widthCPU
+  paddleCPU.up = paddleCPU.y
+  paddleCPU.down = paddleCPU.y + paddleCPU.heightCPU
+
+
+
     // TODO 1: bounce the ball off the top
     if(ball.y < 0){
+      createjs.Sound.play("wall")
+      sc = sc + 1
+      playerText.text = `Score: ${sc}`
       ball.yVelocity = -ball.yVelocity
     }
 
     // TODO 2: bounce the ball off the bottom
     if(ball.y > canvas.height){
+      createjs.Sound.play("wall")
+      sc = sc - 1
+      playerText.text = `Score: ${sc}`
       ball.yVelocity = -ball.yVelocity
     }
 
     // TODO 3: bounce the ball off each of the paddles
     if(
-       ((ball.x < paddlePlayer.x) && ((paddlePlayer.y < ball.y) && ((ball.y < paddlePlayer.y + heightPlayer)))) ||
-      (((ball.x - ball.radius) < (paddlePlayer.x + widthPlayer)) && ((paddlePlayer.y < ball.y) && ((ball.y < paddlePlayer.y + heightPlayer)))) ||
-      ((ball.y < paddlePlayer.y) && ((paddlePlayer.x < ball.x) && ((ball.x < paddlePlayer.x + widthPlayer)))) //||
-      //(ball.y + ball.radius > (paddlePlayer.y + heightPlayer) && ((paddlePlayer.x < ball.x) && ((ball.x < paddlePlayer.x + widthPlayer)))) //||
-      // (ball.x < paddleCPU.x) ||
-      // (ball.x > (paddleCPU.x + widthCPU)) ||
-      // (ball.y < paddleCPU.y) ||
-      // (ball.y > (paddleCPU.y + heightCPU))
+       ((ball.right < paddlePlayer.left)) ||
+      ((ball.left < paddlePlayer.right)) ||
+      
+       (ball.right > paddleCPU.left) ||
+       (ball.left > paddleCPU.right)
     )
     {
+      createjs.Sound.play("hit")
     ball.xVelocity = -ball.xVelocity
     }
+
+
 
   }
 
