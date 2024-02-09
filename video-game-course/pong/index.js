@@ -105,48 +105,57 @@
   ball.down = ball.y + ball.radius
 
   paddlePlayer.left = paddlePlayer.x
-  paddlePlayer.right = paddlePlayer.x + paddlePlayer.widthPlayer
+  paddlePlayer.right = paddlePlayer.x + paddlePlayer.width
   paddlePlayer.up = paddlePlayer.y
-  paddlePlayer.down = paddlePlayer.y + paddlePlayer.heightPlayer
+  paddlePlayer.down = paddlePlayer.y + paddlePlayer.height
 
   paddleCPU.left = paddleCPU.x
-  paddleCPU.right = paddleCPU.x + paddleCPU.widthCPU
+  paddleCPU.right = paddleCPU.x + boundsCPU.width
   paddleCPU.up = paddleCPU.y
-  paddleCPU.down = paddleCPU.y + paddleCPU.heightCPU
+  paddleCPU.down = paddleCPU.y + boundsCPU.height
 
 
 
     // TODO 1: bounce the ball off the top
     if(ball.y < 0){
       createjs.Sound.play("wall")
-      sc = sc + 1
-      playerText.text = `Score: ${sc}`
       ball.yVelocity = -ball.yVelocity
     }
 
     // TODO 2: bounce the ball off the bottom
     if(ball.y > canvas.height){
       createjs.Sound.play("wall")
-      sc = sc - 1
-      playerText.text = `Score: ${sc}`
+
       ball.yVelocity = -ball.yVelocity
     }
 
     // TODO 3: bounce the ball off each of the paddles
     if(
-       ((ball.right < paddlePlayer.left) && (ball.y > paddlePlayer.up || ball.y < paddlePlayer.down)) ||
+       //((ball.right < paddlePlayer.left) && (ball.y > paddlePlayer.up || ball.y < paddlePlayer.down)) ||
       ((ball.left < paddlePlayer.right) && (ball.y > paddlePlayer.up || ball.y < paddlePlayer.down)) ||
       
-       (ball.right > paddleCPU.left) && (ball.y > paddleCPU.up || ball.y < paddleCPU.down) ||
-       (ball.left > paddleCPU.right) && (ball.y > paddleCPU.up || ball.y < paddleCPU.down)
+       (ball.right > paddleCPU.left) && (ball.y > paddleCPU.up || ball.y < paddleCPU.down) //||
+       //(ball.left > paddleCPU.right) && (ball.y > paddleCPU.up || ball.y < paddleCPU.down)
     )
     {
       createjs.Sound.play("hit")
     ball.xVelocity = -ball.xVelocity
     }
 
+    if (ball.left < 0){
+      ball.x = canvas.width / 2;
+      ball.y = canvas.height / 2;
+      sc = sc - 1
+      playerText.text = `Score: ${sc}`
+    }
 
-
+    if(ball.right > canvas.width){
+      ball.x = canvas.width / 2;
+      ball.y = canvas.height / 2;
+      sc = sc + 1
+      playerText.text = `Score: ${sc}`
+    }
+    
   }
 
   // helper function that wraps the draw.rect function for easy paddle making
