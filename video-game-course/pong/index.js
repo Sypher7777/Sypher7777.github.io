@@ -131,11 +131,8 @@
 
     // TODO 3: bounce the ball off each of the paddles
     if(
-       //((ball.right < paddlePlayer.left) && (ball.y > paddlePlayer.up || ball.y < paddlePlayer.down)) ||
-      ((ball.left < paddlePlayer.right) && (ball.y > paddlePlayer.up || ball.y < paddlePlayer.down)) ||
-      
-       (ball.right > paddleCPU.left) && (ball.y > paddleCPU.up || ball.y < paddleCPU.down) //||
-       //(ball.left > paddleCPU.right) && (ball.y > paddleCPU.up || ball.y < paddleCPU.down)
+      ((ball.left < paddlePlayer.right) && ((ball.y > paddlePlayer.up) || ball.y < paddlePlayer.down)) ||
+      ((ball.right > paddleCPU.left) && ((ball.y > paddleCPU.up) || ball.y < paddleCPU.down)) 
     )
     {
       createjs.Sound.play("hit")
