@@ -30,18 +30,23 @@ background.graphics.beginFill("purple").drawRect(0,0,canvas.width,canvas.height)
 const circle1 = new createjs.Shape()
 const circle2 = new createjs.Shape()
 const rect1 = new createjs.Shape()
+const rect2 = new createjs.Shape()
 
 circle1.graphics.beginFill("orange").drawCircle(0,0, radius)
 circle2.graphics.beginFill("black").drawCircle(0,0, radius)
-rect1.graphics.beginFill("orange").drawRect(0,0,canvas.width,canvas.height)
+rect1.graphics.beginFill("orange").drawRect(0,0,100,40)
+rect2.graphics.beginFill("purple").drawRect(0,0,80,30)
+
 
 circle1.x = radius * 2 + margin
 circle2.x = canvas.width - radius * 2 - margin - 300
 circle1.y = circle2.y = canvas.height / 2
-rect1.x = circle1.x + 30
-rect1.y = circle1.y + 30
+rect1.x = (circle1.x + 30)
+rect1.y = (circle1.y + 30)
+rect2.x = (circle1.x + 40)
+rect2.y = (circle1.y + 30)
   // ADD DISPLAY OBJECTS TO STAGE //
-  circleContainer.addChild(circle1,circle2,rect1)
+  circleContainer.addChild(circle1,circle2,rect1,rect2)
   stage.addChild(background, circleContainer)
 
 
@@ -70,7 +75,7 @@ let bounds = 20
     if(circleContainer.x < 0){
       eyeSpeed = -eyeSpeed
     }
-    //update the stage after changing modifiying displayObjects
+    // update the stage after changing modifiying displayObjects
   }
   
 
