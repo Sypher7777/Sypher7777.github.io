@@ -32,7 +32,7 @@
 
   // set initial properties for the paddles
   paddlePlayer.yVelocity = 0;
-  paddleCPU.yVelocity = 6;
+  paddleCPU.yVelocity = 3;
 
   // set initial properties for the ball
   ball.x = canvas.width / 2;
@@ -136,9 +136,11 @@
     // TODO 3: bounce the ball off each of the paddles
     if (
       (ball.left < paddlePlayer.right &&
-        (ball.y > paddlePlayer.up || ball.y < paddlePlayer.down)) ||
+        ball.y > paddlePlayer.up &&
+        ball.y < paddlePlayer.down) ||
       (ball.right > paddleCPU.left &&
-        (ball.y > paddleCPU.up || ball.y < paddleCPU.down))
+        ball.y > paddleCPU.up &&
+        ball.y < paddleCPU.down)
     ) {
       createjs.Sound.play("hit");
       ball.xVelocity = -ball.xVelocity;
