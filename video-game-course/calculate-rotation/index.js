@@ -1,6 +1,7 @@
 // TODO 4: add a param for your game lib last //
 (function (window, opspark, S7) {
   console.log("index.js initialized!");
+ 
 
   const assets = opspark.assets,
     engine = opspark.V6().activateResize(),
@@ -14,9 +15,8 @@
   const ship = assets.makeShip("#C02DFF");
 
   // TODO 5: Center the ship on the stage //
-  ship.x = canvas.x / 2;
-  ship.y = canvas.y / 2;
-
+  ship.x = canvas.width / 2;
+  ship.y = canvas.height / 2;
   // TODO 6: Add the ship to the stage //
   stage.addChild(ship);
 
@@ -32,14 +32,21 @@
      * method takes two points. What do you need to do to translate
      * these values such that they're packed into a point?
      */
-    
+    var mouseCoords = {
+      x: stage.mouseX,
+      y: stage.mouseY,
+    };
+
+    const degrees = S7.numz.getAngleDegrees(ship, mouseCoords);
+
     // TODO 8: Set the ship's rotation property to the degrees //
+    ship.rotation = degrees;
     /*
      * TODO 9: Uncomment the line below to update the textfield
      * with the current angle degrees. Degrees will be a value
      * between π and -π, or, 180 and -180.
      */
-    // assets.updateText(textfield, `Degrees: ${degrees.toFixed(3)}°`, canvas);
+    assets.updateText(textfield, `Degrees: ${degrees.toFixed(3)}°`, canvas);
   }
 
   engine.addTickHandlers(update).activateTick();
