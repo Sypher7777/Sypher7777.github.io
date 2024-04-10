@@ -1,5 +1,5 @@
 // TODO 4: Change *my-game-lib* to the name of your game lib
-(function(window, opspark, *my-game-lib*) {
+(function(window, opspark, S7) {
   const
     engine = opspark.V6().activateResize(),
     canvas = engine.getCanvas(),
@@ -34,6 +34,10 @@
      * is available to you in this scope as, "this".
      * 2. What are the x and y forces acting on our ship?
      */
+
+      console.log(ship)
+      // the code that updates the ship's velocity...
+      S7.phyz.updateVelocity(this, this.propulsion, this.propulsion)
     
     
     
@@ -76,9 +80,18 @@
   // listen for user releasing keys //
   document.onkeyup = function(event) {
     // TODO 13: How do we stop the application of forces?
+    if(event.key === "ArrowUp"){
+      ship.propulsion = 0
+    }
     
+    if (event.key === "ArrowLeft"){
+      ship.rotationalVelocity = 0
+    }
+    else if (event.key === "ArrowRight"){
+      ship.rotationalVelocity = 0
+    }
   };
-  
+
   function reboundCircularAssetInArea(body, area) {
     const
       radius = body.radius,
@@ -92,10 +105,13 @@
       // we've struck the right side of the area //
       body.x = right - radius;
       body.velocityX *= -1;
-    } else if ( /* TODO 9: Check if body's hit left side */ false ) {
+    } else if ( 
+      //TODO 9: check if the body hit the left side
+      body.x - radius<left
+    ) {
       // we've struck the left side of the area //
       // TODO 10: Code the reaction to hitting the left side
-      
+      body.velocityX = -body.velocityX
     }
 
     // check for hit on top or bottom //
@@ -103,12 +119,12 @@
       // we've struck the right side of the area //
       body.y = top + radius;
       body.velocityY *= -1;
-    } else if ( /* TODO 11: Check if body's hit bottom */ false ) {
+    } else if ( body.y + radius > bottom) {
       // we've struck the bottom of the area //
       // TODO 12: Code the reaction to hitting the bottom
-      
+      body.velocityY = -body.velocityY
     }
   }
   
   // TODO 3: replace *my-game-lib* with the name of your game lib //
-}(window, window.opspark, window.*my-game-lib*));
+}(window, window.opspark, window.S7));
