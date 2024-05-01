@@ -12,7 +12,7 @@
   function(game) {
     const
       canvas = game.canvas,
-      width = 293,
+      width = canvas.width,
       asset = new createjs.Container(),
       btnPlay = button('PLAY'),
       btnSettings = button('SETTINGS'),
@@ -20,17 +20,16 @@
     
     function render() {
       asset.x = -width - 10;
-      asset.y = 10;
+      asset.y = 100;
       
       // roundRect: function (width, height, radius, color, strokeColor, strokeStyle, xOffset, yOffset, onShape) {
       const
         background = draw.roundRect(
-          width,
+          width - 30,
           canvas.height - 20,
-          4,
+          440,
           '#FFF',
-          '#CCC',
-          1);
+          '#CCC', 0, 0, -35);
       asset.addChild(background);
 
       const controls = layout({children: [btnPlay, btnSettings]});
@@ -40,9 +39,9 @@
         btnQuit.x = 10;
         btnQuit.y = background.height - btnQuit.getBounds().height - 10;
         asset.addChild(btnQuit);
-      }
-      
+      }      
       game.stage.update();
+      
     }
 
     asset.on('added', onAdded);

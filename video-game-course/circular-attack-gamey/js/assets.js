@@ -42,6 +42,7 @@
       function updateShip(event) {
         phyz.updateVelocity(this, this.propulsion, this.propulsion);
         phyz.reboundCircularAssetInArea(this, canvas);
+        
       }
 
       function updateOrb(event) {

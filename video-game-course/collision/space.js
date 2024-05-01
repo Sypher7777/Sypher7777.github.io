@@ -49,29 +49,39 @@
             const bodyB = active[j];
             
             // TODO 1: Calculate hit test components
-            
-            
+            var distanceX
+            var distanceY
+            var distance
+            var minimumDistance
+            distanceX = (bodyA.x - bodyB.x)
+            distanceY = (bodyA.y - bodyB.y)
+            minimumDistance = bodyA.radius + bodyB.radius
+            distance = (Math.sqrt(((distanceX * distanceX)) + ((distanceY * distanceY))))
+
+
               
             // TODO 2: Do collision check: how do we know if bodies are colliding?
-            if(/* replace with collision check */ false) {
-              // console.log('hit!');
+            if(distance <= minimumDistance) {
+              console.log('hit!');
               
               // TODO 3: Calculate springToX and springToY 
-              
+              var angle = Math.atan2(distanceX, distanceY)
+              var springToX = ((Math.cos(angle) * minimumDistance) + bodyA.x)
               
                 
               // TODO 4: Calculate acceleration to spring-to point, factor in dampeningForce
               
-              
-              
+              var springToY = ((Math.sin(angle) * minimumDistance) + bodyA.y)
+              var accelerationOnX = ((springToX - bodyB.x) * dampeningForce)
+              var accelerationOnY = ((springToY - bodyB.y) * dampeningForce)
               // TODO 5: Apply acceleration to bodyB
               
-              
-              
+              bodyB.velocityX += accelerationOnX
+              bodyB.velocityY += accelerationOnY
               // TODO 6: Apply inverse acceleration to bodyA
-              
-              
-              
+
+              bodyA.velocityX -= accelerationOnX
+              bodyA.velocityY -= accelerationOnY
             }
           }
         }

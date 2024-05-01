@@ -1,4 +1,8 @@
 (function(window, opspark, gamey) {
+  // todo still trying to find a way to find out game state using
+  //    "if((game.getStateName()) != 'lobby'){
+  //      console.log(game.getStateName())
+  //    }"
   const
     map = {
       // used to hold view/mediator factories for the concrete game //
