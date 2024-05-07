@@ -65,7 +65,7 @@
               console.log('hit!');
               
               // TODO 3: Calculate springToX and springToY 
-              var angle = Math.atan2(distanceX, distanceY)
+              var angle = Math.atan2(distanceY, distanceX)
               var springToX = ((Math.cos(angle) * minimumDistance) + bodyA.x)
               
                 
@@ -76,12 +76,12 @@
               var accelerationOnY = ((springToY - bodyB.y) * dampeningForce)
               // TODO 5: Apply acceleration to bodyB
               
-              bodyB.velocityX += accelerationOnX
-              bodyB.velocityY += accelerationOnY
+              bodyB.velocityX -= accelerationOnX
+              bodyB.velocityY -= accelerationOnY
               // TODO 6: Apply inverse acceleration to bodyA
 
-              bodyA.velocityX -= accelerationOnX
-              bodyA.velocityY -= accelerationOnY
+              bodyA.velocityX += accelerationOnX
+              bodyA.velocityY += accelerationOnY
             }
           }
         }
