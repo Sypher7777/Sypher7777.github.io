@@ -29,7 +29,7 @@
         '#FFF',
         '#444',
         1),
-      textfield = draw.textfield('GAME OVER', 'bold 60px Arial', '#CCC', 'left'),
+      textfield = draw.textfield('GAME OVER', 'bold 60px Arial', '#000', 'left'),
       content = layout({
         background: background,
         children: [textfield, btnLobby, btnPlay], 
@@ -51,8 +51,8 @@
       asset.alpha = 0;
       
       var tfb = textfield.getBounds();
-      // textfield.x = (background.width - tfb.width) / 2;
-      // textfield.y = (background.height - tfb.height) / 2 - btnLobby.getBounds().height;
+      textfield.x = (background.width - tfb.width) / 2;
+      textfield.y = (background.height - tfb.height) / 2 - btnLobby.getBounds().height;
       
       asset.x = (canvas.width - background.width) / 2;
       asset.y = (canvas.height - background.height) / 2;
@@ -60,8 +60,10 @@
     
     // called on screen resize //
     function liquify() {
-      return createjs.Tween.get(asset, { loop: false })
-          .to({ x: (canvas.width - background.width) / 2, y: (canvas.height - background.height) / 2 }, 700, createjs.Ease.getPowInOut(4));
+      return createjs.Tween.get(asset, { loop: false }).to({ x: (canvas.width - background.width) / 2
+      , y : (canvas.height - background.height) / 2 }
+      , 700
+      , createjs.Ease.getPowInOut(4));
     }
 
     // setup a one-time added-to-parent listener //

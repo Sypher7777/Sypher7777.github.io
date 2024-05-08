@@ -21,7 +21,7 @@
     // create view components here //
     const
       menu = opspark.factory.menu(game),
-      textfield = draw.textfield('PAUSED', 'bold 60px Arial', '#FFF');
+      textfield = draw.textfield('PAUSED', 'bold 60px Arial', '#EEE');
     
     // add all view components to the view container //
     asset.addChild(menu.asset, textfield);
@@ -32,6 +32,7 @@
      * Use render() to config and position components.
      */
     function render() {
+      canvas.style.backgroundColor = '#808080';
       textfield.alpha = 0;
       textfield.x = canvas.width / 2;
       textfield.y = 10;
@@ -71,6 +72,7 @@
         createjs.Tween.get(textfield, { loop: false })
           .to({ alpha: 0 }, 50, createjs.Ease.getPowInOut(4));
         // just return the last tween //
+        canvas.style.backgroundColor = '#EEE';
         return menu.close();
       }
     };

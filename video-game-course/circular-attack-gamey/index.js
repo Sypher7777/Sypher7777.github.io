@@ -3,6 +3,7 @@
   //    "if((game.getStateName()) != 'lobby'){
   //      console.log(game.getStateName())
   //    }"
+
   const
     map = {
       // used to hold view/mediator factories for the concrete game //
@@ -23,6 +24,10 @@
           mediator: opspark.playa.pausedMediator,
           view: opspark.playa.paused,
         },
+        settings: {
+          mediator: opspark.playa.settingsMediator,
+          view: opspark.playa.settings,
+        },
         end: {
           mediator: opspark.playa.endMediator,
           view: opspark.playa.end,
@@ -39,5 +44,15 @@
   const fps = opspark.draw.fps('#000');
   game.hud.addChild(fps);
   game.addUpdateable(fps);
+        
+
+  function getState(){ 
+    if((game.getStateName()) != 'lobby'){
+        console.log(game.getStateName())
+    }
+  }
+  setInterval(getState,1000)
+
+
 
 }(window, window.opspark, window.opspark.gamey));

@@ -31,8 +31,8 @@
           '#FFF',
           '#CCC', 0, 0, -35);
       asset.addChild(background);
-
-      const controls = layout({children: [btnPlay, btnSettings]});
+          console.log({layout})
+      const controls = layout({children: [btnPlay, btnSettings], direction: "VERTICAL"});
       asset.addChild(controls);
       
       if(game.getStateName() === 'paused') {

@@ -5,7 +5,7 @@
    * Creates and returns the paused mediator.
    */
   function(view, game, data) {
-    
+    console.log({game})
     function onKeyDown(event) {
       if ((event.metaKey || event.ctrlKey) && (String.fromCharCode(event.which).toLowerCase() === 'p')) {
         event.preventDefault();
@@ -19,11 +19,11 @@
       view.menu.btnPlay.off('click', onPlayClicked);
       game.play();
     }
-    
+
     function onSettingsClicked(event) {
       view.menu.btnSettings.off('click', onSettingsClicked);
       console.log('TODO: show settings');
-      // showSettings();
+        game.settings();
     }
     
     function onQuitClicked(event) {

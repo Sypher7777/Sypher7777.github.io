@@ -19,7 +19,7 @@
       container = new createjs.Container();
       
     // create view components here //
-    const textfield = draw.textfield('PLAYING', 'bold 60px Arial', '#DDD');
+    const textfield = draw.textfield('PLAYING', 'bold 60px Arial', '#000');
     
     // add all view components to the view container //
     container.addChild(textfield);

@@ -21,7 +21,7 @@
       
     // create view components here //
     const
-      textfield = draw.textfield('LOBBY', 'bold 60px Arial', '#FFF', ),
+      textfield = draw.textfield('LOBBY', 'bold 60px Arial', '#000000', ),
       menu = opspark.factory.menu(game);
       
     // add all view components to the view container //
