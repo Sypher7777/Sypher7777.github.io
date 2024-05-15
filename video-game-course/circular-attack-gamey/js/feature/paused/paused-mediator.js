@@ -7,7 +7,8 @@
   function(view, game, data) {
     console.log({game})
     function onKeyDown(event) {
-      if ((event.metaKey || event.ctrlKey) && (String.fromCharCode(event.which).toLowerCase() === 'p')) {
+      if ((event.metaKey || event.ctrlKey) && 
+      (String.fromCharCode(event.which).toLowerCase() === 'p')) {
         event.preventDefault();
         event.stopPropagation();
         window.removeEventListener('keydown', onKeyDown);
@@ -22,8 +23,8 @@
 
     function onSettingsClicked(event) {
       view.menu.btnSettings.off('click', onSettingsClicked);
-      console.log('TODO: show settings');
-        game.settings();
+      console.log("working???");
+        game.settings-view.open();
     }
     
     function onQuitClicked(event) {

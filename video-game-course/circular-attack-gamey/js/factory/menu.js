@@ -16,6 +16,7 @@
       asset = new createjs.Container(),
       btnPlay = button('PLAY'),
       btnSettings = button('SETTINGS'),
+      btnColor = button('CHANGE COLORS?')
       btnQuit = button('QUIT', '#d9534f', '#d43f3a', true);
     
     function render() {
@@ -32,14 +33,8 @@
           '#CCC', 0, 0, -35);
       asset.addChild(background);
           console.log({layout})
-      const controls = layout({children: [btnPlay, btnSettings], direction: "VERTICAL"});
+      const controls = layout({children: [btnPlay, btnSettings, btnColor, btnQuit], direction: "VERTICAL"});
       asset.addChild(controls);
-      
-      if(game.getStateName() === 'paused') {
-        btnQuit.x = 10;
-        btnQuit.y = background.height - btnQuit.getBounds().height - 10;
-        asset.addChild(btnQuit);
-      }      
       game.stage.update();
       
     }
@@ -57,6 +52,7 @@
       btnPlay,
       btnSettings,
       btnQuit,
+      btnColor,
       open() {
         return createjs.Tween.get(asset, { loop: false })
           .to({ x: 10, alpha: 1 }, 700, createjs.Ease.getPowInOut(4));

@@ -20,8 +20,8 @@
       
     // create view components here //
     const
+    textfield = draw.textfield('PAUSED', 'bold 60px Arial', '#EEE');
       menu = opspark.factory.menu(game),
-      textfield = draw.textfield('PAUSED', 'bold 60px Arial', '#EEE');
     
     // add all view components to the view container //
     asset.addChild(menu.asset, textfield);

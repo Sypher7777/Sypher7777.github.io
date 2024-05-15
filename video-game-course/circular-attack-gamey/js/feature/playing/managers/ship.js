@@ -55,7 +55,7 @@
 
       // return the ship manager api //
       return {
-        spawn(color = '#4286f4') {
+        spawn(color = window.color) {
           if(ship) throw new Error('Player is already spawned!');
           // only one ship is managed by the module //
           ship = assets.makeShip(color);
