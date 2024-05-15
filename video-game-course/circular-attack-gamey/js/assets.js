@@ -60,11 +60,11 @@
        */
       return {
         makeProjectile() {
-          const projectile = _.extend(draw.circle(5, '#ff0000'), phyz.makeBody('projectile'));
+          const projectile = _.extend(draw.circle(2, '#ff0000'), phyz.makeBody('projectile'));
 
           // TODO : get from settings JSON //
           projectile.volatility = .125;
-          projectile.velocityMax = 10;
+          projectile.velocityMax = 6;
           projectile.update = updateProjectile
           
           projectile.snapToPixel = true;
@@ -74,7 +74,7 @@
         },
         makeShip(color) {
           const
-            radius = 25,
+            radius = 20,
             ship = draw.rect(radius, radius, color, null, null, -(radius + radius / 10), -(radius / 2));
 
           // continue to draw on the ship Shape to create our design //

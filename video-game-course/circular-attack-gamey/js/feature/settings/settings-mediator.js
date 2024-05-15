@@ -33,8 +33,7 @@
           return new Promise(function(resove, reject) {
             game.view.addChild(view.asset);
             view.btnLobby.on('click', onLobbyClicked);
-            view.btnSettings.on('click', onSettingsClicked);
-            view.setText(_.get(data, 'message') || 'Game Over');
+            view.btnSettings.on('click', onSettingsClicked);;
             view.open();
             // don't wait for open animation to end to call resolve //
             resove();

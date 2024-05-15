@@ -5,7 +5,7 @@
             "name": "Level 1",
             "hitTest": "radiiHitTest",
             "dampeningForce": 0.06,
-            "rateOfFire": 200
+            "rateOfFire": 0
         }
     ]
 }

@@ -20,34 +20,44 @@
       menu.close().call(game.lobby)
     }
 
+    function onSettingsClicked() {
+      console.log("dxyzlan")
+      menu.btnSettings.off('click', onSettingsClicked);
+      menu.close().call(game.settings);
+    }
+
     function onColorClicked() {
       console.log("changed")
       // var color = '#4286f4'
       let temp = Math.random()
       let color = '';
-      let color2 = ''
-      if((temp > 0) && (temp < 0.2)){
+      let color2 = '';
+      if((temp > 0) && (temp < 0.1)){
         color = '#0000FF'
         color2 = '#FF0000'
       }
-      if((temp > 0.2) && (temp < 0.4)){
+      if((temp > 0.1) && (temp < 0.2)){
         color = '#FF0000'
         color2 = '#0000FF'
       }
-      if((temp > 0.4) && (temp < 0.6)){
+      if((temp > 0.2) && (temp < 0.3)){
         color = '#000000'
         color2 = '#FFFFFF'
       }
-      if((temp > 0.6) && (temp < 0.8)){
+      if((temp > 0.3) && (temp < 0.4)){
         color = '#FFFFFF'
         color2 = '#000000'
       }
-      if((temp > 0.8) && (temp < 0.819999999)){
+      if((temp > 0.4) && (temp < 0.419999999)){
         color = '#800080'
       }
-      if((temp > 0.819999999) && (temp < 1)){
+      if((temp > 0.419999999) && (temp < 0.5)){
         color = '#FFFF00'
         color2 = '#FFFF00'
+      }
+      else{
+        color = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0')
+        color2 = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0')
       }
       window.color = color
       window.color2 = color2
@@ -77,6 +87,7 @@
           menu.btnPlay.on('click', onPlayClicked)
           menu.btnQuit.on('click', onQuitClicked);
           menu.btnColor.on('click', onColorClicked)
+          menu.btnSettings.on('click', onSettingsClicked)
 
           resolve();
         });
