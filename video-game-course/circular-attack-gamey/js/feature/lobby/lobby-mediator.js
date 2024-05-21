@@ -21,9 +21,9 @@
     }
 
     function onSettingsClicked() {
-      console.log("dxyzlan")
+      console.log("don't work :(")
       menu.btnSettings.off('click', onSettingsClicked);
-      menu.close().call(game.settings);
+      // menu.close().call(game.settings);
     }
 
     function onColorClicked() {
